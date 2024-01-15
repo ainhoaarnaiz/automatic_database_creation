@@ -1,0 +1,58 @@
+{
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.autoComplete.extraPaths": [
+        "/dev_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "./commander/src"
+    ],
+    "python.analysis.extraPaths": [
+        "/dev_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "./commander/src"
+    ],
+    "ros.distro": "noetic",
+    "files.exclude": {
+        "**/*.pyc": true,
+        ".nyc_output": true,
+        "obj": true,
+        "bin": true,
+        "**/__pycache__": true,
+        "**/node_modules": true,
+        ".vscode-test": false,
+        ".vscode test": false,
+        "**/.mypy_cache/**": true
+    },
+    "flake8.args": [
+        "--max-line-length=100",
+        "--ignore=E501,E305,CNL100,W503,Q000,E203"
+    ],
+    
+
+    "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "100",
+    ],
+    "isort.args":["--profile", "black"],
+    "notebook.formatOnCellExecution": true,
+    "notebook.formatOnSave.enabled": true,
+    "problems.decorations.enabled": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.quickSuggestionsDelay": 10,
+    "cmake.configureOnOpen": false,
+    "python.linting.enabled": true,
+    "python.linting.prospectorEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+}

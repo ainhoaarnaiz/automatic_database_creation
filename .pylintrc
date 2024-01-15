@@ -1,0 +1,7 @@
+[MASTER] 
+
+init-hook='import sys; 
+sys.path.append(
+    "/opt/ros/noetic/lib/python3/dist-packages",
+    "/dev_ws/devel/lib/python3/dist-packages")'
+disable=C0115, C0116

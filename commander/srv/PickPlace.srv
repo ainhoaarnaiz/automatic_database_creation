@@ -1,0 +1,4 @@
+bool state
+string co_id
+---
+bool success

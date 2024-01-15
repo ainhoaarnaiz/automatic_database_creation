@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro">
+    <!-- Here we define the 2 parameters of the macro -->
+    <xacro:macro name="end_effector" params="prefix connected_to">
+        <!-- Create a fixed joint with a parameterized name. -->
+        <joint name="${prefix}end_effector_joint" type="fixed">
+            <!-- The parent link must be read from the robot model it is attached to. -->
+            <parent link="${connected_to}" />
+            <child link="${prefix}end_effector" />
+            <!-- The tool is directly attached to the flange. -->
+            <origin rpy="0 ${-pi/2} ${pi}" xyz="0 0 0" />
+        </joint>
+        <link name="${prefix}end_effector">
+            <visual>
+                <geometry>
+                    <!-- The path to the visual meshes in the package. -->
+                    <mesh
+                        filename="package://ur10e_ka_moveit_config/ka_description/meshes/ka_vi.stl" />
+                </geometry>
+                <material name="black">
+                    <color rgba="${50/255} ${50/255} ${50/255} 1.0" />
+                </material>
+            </visual>
+            <collision>
+                <geometry>
+                    <!-- The path to the collision meshes in the package. -->
+                    <mesh
+                        filename="package://ur10e_ka_moveit_config/ka_description/meshes/ka_co.stl" />
+                </geometry>
+            </collision>
+        </link>
+        <!-- TCP frames -->
+        <joint name="${prefix}depth_camera_joint" type="fixed">
+            <origin xyz="0.111986021427 6.69550452272e-8 2.22519248532e-02" rpy="-1.675516081915675 1.6790457912918555e-12 -1.570796326781967" />
+            <parent link="${prefix}end_effector" />
+            <child link="${prefix}depth_camera_tcp" />
+        </joint>
+        <link name="${prefix}depth_camera_tcp" />
+
+        <joint name="${prefix}rgb_camera_joint" type="fixed">
+            <origin xyz="0.10554133441 -3.19999999972e-02 1.94659300526e-02" rpy="-1.5707963267928968 0.0 -1.5707963267808966" />
+            <parent link="${prefix}end_effector" />
+            <child link="${prefix}rgb_camera_tcp" />
+        </joint>
+        <link name="${prefix}rgb_camera_tcp" />
+    </xacro:macro>
+</robot>

@@ -1,0 +1,14 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0 0 0 0 0 0 1 rgb_camera_tcp rgb_camera_link 100" />
+    
+    <include file="$(find astra_camera)/launch/astra.launch">
+        <arg name="enable_point_cloud_xyzrgb" default="true"/>
+    </include>
+
+    <arg name="rgb_topic" default="/camera/color/image_raw" />
+    <arg name="pcd_topic" default="/camera/depth_registered/points" />
+    <node name="capture_manager" pkg="capture_manager" type="capture_manager_node.py" output="screen">
+        <param name="rgb_topic" value="$(arg rgb_topic)" />
+        <param name="pcd_topic" value="$(arg pcd_topic)" />
+    </node>
+</launch>

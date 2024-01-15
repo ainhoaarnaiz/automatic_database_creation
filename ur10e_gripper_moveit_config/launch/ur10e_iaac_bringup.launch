@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find ur_robot_driver)/launch/ur10e_bringup.launch">
+        <!-- host_ip=192.168.56.1 -->
+        <arg name="robot_ip" value="192.168.56.101" />
+        <arg name="kinematics_config"
+            value="$(find ur10e_gripper_moveit_config)/config/ur10e_iaac_calibration.yaml" />
+    </include>
+    <include file="$(find ur10e_gripper_moveit_config)/launch/moveit_planning_execution.launch" />
+</launch>

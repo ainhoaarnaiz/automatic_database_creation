@@ -1,0 +1,4 @@
+string path
+geometry_msgs/Pose capture_pose
+---
+bool success

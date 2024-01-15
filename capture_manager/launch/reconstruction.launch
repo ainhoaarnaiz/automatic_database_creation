@@ -1,0 +1,34 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0 0 0 0 0 0 1 rgb_camera_tcp rgb_camera_link 100" />
+    <!-- kinect azure -->
+    <include file="$(find azure_kinect_ros_driver)/launch/driver.launch">
+        <arg name="overwrite_robot_description" value="false" />
+        <arg name="depth_mode" value="NFOV_UNBINNED" />
+        <arg name="fps" value="15" />
+        <arg name="point_cloud" value="false" />
+        <arg name="rgb_point_cloud" value="false" />
+        <arg name="color_format" value="bgra" />
+        <arg name="color_resolution" value="720P" />
+        <arg name="depth_unit" value ="16UC1" />
+    </include>
+
+
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0 0 0 0 0 0 1 rgb_camera_tcp camera_link 100" />
+    <include file="$(find astra_camera)/launch/astra.launch">
+        <arg name="enable_point_cloud" default="false"/>
+        <arg name="enable_point_cloud_xyzrgb" default="false"/>
+        <arg name="color_depth_synchronization" default="true"/>
+        <arg name="tf_publish_rate" default="100.0"/>
+
+    </include> -->
+    <!-- Reconstruction -->
+    <include file="$(find industrial_reconstruction)/launch/reconstruction.launch">
+        <arg name="depth_image_topic" value="/depth_to_rgb/image_raw" />
+        <arg name="color_image_topic" value="/rgb/image_raw" />
+        <arg name="camera_info_topic" value="/depth_to_rgb/camera_info" />
+    </include>
+
+
+
+</launch>

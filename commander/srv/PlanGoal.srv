@@ -1,0 +1,4 @@
+Goal goal
+---
+bool success
+bool configuration_change

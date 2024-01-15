@@ -1,0 +1,13 @@
+<launch>
+    <arg name="sim" default="true"/>
+    <include if="$(arg sim)" file="$(find ur10e_ka_moveit_config)/launch/demo.launch" />
+    <include unless="$(arg sim)" file="$(find ur10e_ka_moveit_config)/launch/ur10e_iaac_bringup.launch" />
+    <include unless="$(arg sim)" file="$(find ur10e_ka_moveit_config)/launch/moveit_rviz.launch">
+        <arg name="rviz_config" value="$(find ur10e_ka_moveit_config)/launch/moveit.rviz" />
+    </include>
+    <node name="trajectory_tracer" pkg="commander" type="trace_trajectory_srv.py" output="screen" />
+    <node name="pose_visualizer" pkg="commander" type="visualize_poses_srv.py" output="screen" />
+    <node name="commander" pkg="commander" type="commander_node.py" output="screen">
+        <param name="sim" value="$(arg sim)"/>
+    </node>
+</launch>
