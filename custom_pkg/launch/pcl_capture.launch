@@ -1,0 +1,15 @@
+<launch>
+  <arg name="file_path" default="/dev_ws/src/software_II_project/custom_pkg/captures/raw_04.ply" />
+  <arg name="save_path" default="/dev_ws/src/software_II_project/custom_pkg/captures/cropped_04.ply" />
+
+  <node pkg="custom_pkg" type="reconstruction_node.py" name="reconstruction_node" output="screen">
+    <param name="ply_file_path" type="string" value="$(arg file_path)" />
+  </node>
+
+  <node pkg="custom_pkg" type="filtering_node.py" name="filtering_node" output="screen">
+    <param name="ply_file_path" type="string" value="$(arg file_path)" />
+    <param name="ply_save_path" type="string" value="$(arg save_path)" />
+  </node>
+
+
+</launch>
