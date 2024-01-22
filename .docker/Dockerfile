@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     cmake \
     python3-pip \
     python3-flake8 \
+    nautilus \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --no-cache-dir --upgrade pip\
@@ -86,13 +87,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
     ros-$ROS_DISTRO-speed-scaling-state-controller \
     ros-$ROS_DISTRO-velocity-controllers \
     ros-$ROS_DISTRO-effort-controllers \
+    ros-$ROS_DISTRO-rosbridge-suite \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
 RUN mkdir -p dev_ws/src
 WORKDIR /dev_ws/src
 
-RUN git clone https://github.com/tork-a/rqt_joint_trajectory_plot.git
+#RUN git clone https://github.com/tork-a/rqt_joint_trajectory_plot.git
 
 # niceness permissions (for ur driver use without Prempt-RT)
 RUN echo "* - nice -15" >> /etc/security/limits.conf
@@ -130,7 +132,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
 
 
 WORKDIR /dev_ws/src
-RUN git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git
+#RUN git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git
 
 # FROM base as astra
 # WORKDIR /

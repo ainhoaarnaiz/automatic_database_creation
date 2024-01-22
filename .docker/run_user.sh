@@ -19,4 +19,6 @@ docker run -it --privileged \
     --volume="/dev:/dev" \
     --net=host \
     --cap-add=sys_nice \
+    --memory="12g" \
+    --cpus="8" \
     iaac_ur_commander:latest
