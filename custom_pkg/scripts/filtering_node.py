@@ -71,8 +71,8 @@ def crop_point_cloud(file_path, save_path):
 
 if __name__ == '__main__':
     rospy.init_node('point_cloud_cropper_node')
-    ply_file_path = rospy.get_param("~ply_file_path", "/dev_ws/src/software_II_project/custom_pkg/captures/raw_01.ply")
-    ply_save_path = rospy.get_param("~ply_save_path", "/dev_ws/src/software_II_project/custom_pkg/captures/cropped_01.ply")
+    ply_file_path = rospy.get_param("~ply_file_path", "/dev_ws/src/software_II_project/custom_pkg/captures/raw.ply")
+    ply_save_path = rospy.get_param("~ply_save_path", "/dev_ws/src/software_II_project/custom_pkg/captures/cropped.ply")
     try:
         crop_point_cloud(ply_file_path, ply_save_path)
         rospy.spin()

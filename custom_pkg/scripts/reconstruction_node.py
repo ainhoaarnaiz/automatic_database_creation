@@ -42,7 +42,7 @@ CAPTURE = True
 
 rospy.init_node("reconstruction")
 
-ply_file_path = rospy.get_param("~ply_file_path", "/dev_ws/src/software_II_project/custom_pkg/captures/raw_01.ply")
+ply_file_path = rospy.get_param("~ply_file_path", "/dev_ws/src/software_II_project/custom_pkg/captures/raw.ply")
 
 load_scene()
 

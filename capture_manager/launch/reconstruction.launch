@@ -3,7 +3,7 @@
     <!-- kinect azure -->
     <include file="$(find azure_kinect_ros_driver)/launch/driver.launch">
         <arg name="overwrite_robot_description" value="false" />
-        <arg name="depth_mode" value="NFOV_UNBINNED" />
+        <arg name="depth_mode" value="WFOV_UNBINNED" />
         <arg name="fps" value="15" />
         <arg name="point_cloud" value="false" />
         <arg name="rgb_point_cloud" value="false" />
